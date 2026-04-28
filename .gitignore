@@ -8,9 +8,14 @@
 *.sketch
 *.fig
 images/
+_tmp_extract/
 
 # But DO ship the brochure PDF that's linked from the site
 !lumina.pdf
+
+# But DO ship deploy images under public/img/
+!public/img/
+!public/img/**
 
 # Source images that aren't deploy assets
 *.png
