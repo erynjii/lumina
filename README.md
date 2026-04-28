@@ -5,33 +5,57 @@ Static marketing site for [luminabymirra.com](https://luminabymirra.com).
 ## Stack
 
 - **Plain HTML/CSS/JS** — no build step.
-- **Hosting:** Cloudflare Pages (project `lumina-by-mirra`, account `Celimedia`).
-- **Assets:** Images and video are served from a Shopify CDN bucket
+- **Hosting:** Cloudflare Workers + Static Assets (project `lumina`,
+  account `Celimedia`). Deployed via Workers Builds on push to `main`.
+- **Image/video assets:** Served from a Shopify CDN bucket
   (`cdn.shopify.com/s/files/1/0701/6729/8284/...`) — not from this repo.
 
-## Files
+## Repo layout
 
-- `index.html` — Homepage. Rendered at `/`.
-- `privacy.html` — Privacy policy. Rendered at `/privacy`.
-- `terms.html` — Terms of service. Rendered at `/terms`.
+```
+lumina/
+├── public/                 # everything served at the edge
+│   ├── index.html          # Homepage   → /
+│   ├── privacy.html        # Privacy    → /privacy
+│   ├── terms.html          # Terms      → /terms
+│   ├── 404.html            # Not Found  → served on any unknown path
+│   └── lumina.pdf          # Brochure   → /lumina.pdf
+├── wrangler.jsonc          # Cloudflare Worker config (assets binding)
+├── README.md
+├── .gitignore
+├── .gitattributes
+└── setup-git.ps1           # One-shot bootstrap (idempotent)
+```
 
-Cloudflare Pages serves `*.html` at extensionless URLs by default, which is
-why `index.html` links to `/privacy` and `/terms`.
+`html_handling: "auto-trailing-slash"` in `wrangler.jsonc` is what makes
+`/privacy` and `/terms` resolve without the `.html` extension.
 
 ## Deploys
 
-Every push to `main` deploys to Cloudflare Pages production once the repo is
-connected to the `lumina-by-mirra` Pages project. Preview deploys are created
-for any non-`main` branch and for pull requests.
+Every push to `main` triggers a Cloudflare Workers Build. The build runs
+`npx wrangler deploy`, which uploads `public/` as static assets and points
+the Worker at it. Routes:
+
+- `luminabymirra.com/*` → Worker `lumina`
+- `www.luminabymirra.com/*` → Worker `lumina`
+
+Preview deploys are created for any non-`main` branch.
 
 ## Local development
 
-Open `index.html` directly in a browser. No server needed. For accurate
-relative-link behavior (so `/privacy` resolves correctly), serve the folder:
+Open `public/index.html` directly in a browser, or serve the `public/`
+folder so `/privacy` and `/terms` resolve as clean URLs:
 
 ```bash
+cd public
 python3 -m http.server 8000
-# then visit http://localhost:8000
+# visit http://localhost:8000
+```
+
+For a closer-to-prod preview using Wrangler:
+
+```bash
+npx wrangler dev
 ```
 
 ## Distribution
