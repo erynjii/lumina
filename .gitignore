@@ -9,6 +9,9 @@
 *.fig
 images/
 
+# But DO ship the brochure PDF that's linked from the site
+!lumina.pdf
+
 # Source images that aren't deploy assets
 *.png
 *.jpg
