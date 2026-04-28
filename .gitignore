@@ -1,0 +1,51 @@
+# Source media (not deployed; site loads assets from Shopify CDN)
+*.mp4
+*.MOV
+*.mov
+*.pdf
+*.psd
+*.ai
+*.sketch
+*.fig
+images/
+
+# Source images that aren't deploy assets
+*.png
+*.jpg
+*.jpeg
+*.JPEG
+*.JPG
+*.PNG
+# But DO ship favicon and apple-touch-icon if they exist at the deploy root
+!favicon.ico
+!apple-touch-icon.png
+
+# Secrets — never commit
+*token*.txt
+*token*.env
+*.token
+.env
+.env.*
+!.env.example
+resend.txt
+resend.txt.txt
+cloudflare-token.txt
+*.pem
+*.key
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.~lock.*
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Node / build (none right now, but in case)
+node_modules/
+dist/
+build/
+.cache/
