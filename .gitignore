@@ -1,47 +1,50 @@
-# Source media (not deployed; site loads assets from Shopify CDN)
-*.mp4
-*.MOV
-*.mov
-*.pdf
-*.psd
-*.ai
-*.sketch
-*.fig
-images/
-_tmp_extract/
+# ─────────────────────────────────────────────────────────────────
+# Lumina by Mirra — repo .gitignore
+#
+# Strategy: ignore SPECIFIC source folders, not file extensions.
+# Everything inside public/ is shipped; everything outside is local-
+# only unless committed explicitly. This prevents the "negation
+# didn't fire" footgun we hit earlier with blanket *.jpg rules.
+# ─────────────────────────────────────────────────────────────────
 
-# But DO ship the brochure PDF that's linked from the site
-!lumina.pdf
+# Local-only source folders (raw assets, scratch from PDF extraction).
+# Files inside these never get committed. To deploy an asset, copy or
+# move it to public/img/ instead.
+/images/
+/_tmp_extract/
+/raw/
+/source/
 
-# But DO ship deploy images under public/img/
-!public/img/
-!public/img/**
+# Loose source media files at the repo root.
+# Anything inside public/ is fine — these patterns are anchored with
+# a leading slash, so they only match the root.
+/*.mp4
+/*.MOV
+/*.mov
+/*.psd
+/*.ai
+/*.sketch
+/*.fig
 
-# Source images that aren't deploy assets
-*.png
-*.jpg
-*.jpeg
-*.JPEG
-*.JPG
-*.PNG
-# But DO ship favicon and apple-touch-icon if they exist at the deploy root
-!favicon.ico
-!apple-touch-icon.png
+# Loose images at the repo root (not inside public/).
+/*.png
+/*.jpg
+/*.jpeg
+/*.PNG
+/*.JPG
+/*.JPEG
 
-# Secrets — never commit
+# Secrets — never commit anywhere in the tree.
 *token*.txt
 *token*.env
 *.token
 .env
 .env.*
 !.env.example
-resend.txt
-resend.txt.txt
-cloudflare-token.txt
 *.pem
 *.key
 
-# OS / editor junk
+# OS / editor junk.
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -52,8 +55,9 @@ desktop.ini
 .vscode/
 .idea/
 
-# Node / build (none right now, but in case)
+# Node / build artifacts.
 node_modules/
 dist/
 build/
 .cache/
+.wrangler/

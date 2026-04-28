@@ -14,21 +14,23 @@ Static marketing site for [luminabymirra.com](https://luminabymirra.com).
 
 ```
 lumina/
-├── public/                 # everything served at the edge
-│   ├── index.html          # Homepage   → /
-│   ├── privacy.html        # Privacy    → /privacy
-│   ├── terms.html          # Terms      → /terms
-│   ├── 404.html            # Not Found  → served on any unknown path
-│   └── lumina.pdf          # Brochure   → /lumina.pdf
-├── wrangler.jsonc          # Cloudflare Worker config (assets binding)
+├── public/                       # everything served at the edge
+│   ├── index.html                # Homepage     → /
+│   ├── instructions.html         # Application  → /instructions
+│   ├── privacy.html              # Privacy      → /privacy
+│   ├── terms.html                # Terms        → /terms
+│   ├── 404.html                  # Not Found    → unknown paths
+│   ├── lumina.pdf                # Brochure     → /lumina.pdf
+│   └── img/
+│       └── instructions-*.jpg    # Procedure photos
+├── wrangler.jsonc                # Cloudflare Worker config (assets binding)
 ├── README.md
 ├── .gitignore
-├── .gitattributes
-└── setup-git.ps1           # One-shot bootstrap (idempotent)
+└── .gitattributes
 ```
 
 `html_handling: "auto-trailing-slash"` in `wrangler.jsonc` is what makes
-`/privacy` and `/terms` resolve without the `.html` extension.
+extensionless URLs (`/instructions`, `/privacy`, `/terms`) resolve.
 
 ## Deploys
 
