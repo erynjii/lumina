@@ -4,7 +4,7 @@ Static marketing site for [luminabymirra.com](https://luminabymirra.com).
 
 ## Stack
 
-- **Plain HTML/CSS/JS** — no build step.
+- **Plain HTML/CSS/JS** — no framework, no build tooling required at deploy time.
 - **Hosting:** Cloudflare Workers + Static Assets (project `lumina`,
   account `Celimedia`). Deployed via Workers Builds on push to `main`.
 - **Image/video assets:** Served from a Shopify CDN bucket
@@ -15,22 +15,61 @@ Static marketing site for [luminabymirra.com](https://luminabymirra.com).
 ```
 lumina/
 ├── public/                       # everything served at the edge
-│   ├── index.html                # Homepage     → /
-│   ├── instructions.html         # Application  → /instructions
-│   ├── privacy.html              # Privacy      → /privacy
-│   ├── terms.html                # Terms        → /terms
-│   ├── 404.html                  # Not Found    → unknown paths
-│   ├── lumina.pdf                # Brochure     → /lumina.pdf
-│   └── img/
-│       └── instructions-*.jpg    # Procedure photos
-├── wrangler.jsonc                # Cloudflare Worker config (assets binding)
+│   ├── index.html                # English homepage     → /
+│   ├── instructions.html         # English instructions → /instructions
+│   ├── privacy.html              # → /privacy   (English-only, legal)
+│   ├── terms.html                # → /terms     (English-only, legal)
+│   ├── 404.html                  # branded 404
+│   ├── lumina.pdf                # → /lumina.pdf
+│   ├── sitemap.xml               # → /sitemap.xml (with hreflang alternates)
+│   ├── robots.txt                # → /robots.txt
+│   ├── img/                      # procedure photos
+│   ├── es/                       # Spanish variants
+│   │   ├── index.html            # → /es/
+│   │   └── instructions.html     # → /es/instructions
+│   ├── pt/                       # Portuguese variants
+│   └── ar/                       # Arabic variants (RTL)
+├── tools/
+│   ├── generate-i18n.js          # builds /es/, /pt/, /ar/ from English source
+│   └── i18n-meta.js              # per-page meta translations (titles, OG, etc.)
+├── wrangler.jsonc                # Cloudflare Worker config
 ├── README.md
 ├── .gitignore
 └── .gitattributes
 ```
 
-`html_handling: "auto-trailing-slash"` in `wrangler.jsonc` is what makes
-extensionless URLs (`/instructions`, `/privacy`, `/terms`) resolve.
+## Internationalization
+
+The site has full per-language URL variants for SEO:
+
+- `/`, `/instructions` — English (canonical default)
+- `/es/`, `/es/instructions` — Spanish
+- `/pt/`, `/pt/instructions` — Portuguese
+- `/ar/`, `/ar/instructions` — Arabic (RTL)
+
+Every page declares hreflang alternates pointing to all four URL variants, and
+`sitemap.xml` lists every variant with `xhtml:link` cross-references so Google
+indexes each language independently.
+
+The language switcher at the top-right is plain anchor links — clicking ES on
+the homepage takes you to `/es/`. No JavaScript-based content swapping.
+
+### Editing translations
+
+Body translations live inside the `const T = { en, es, pt, ar }` object in
+each English source HTML file (`public/index.html`, `public/instructions.html`).
+Per-page meta translations (titles, descriptions, Open Graph copy) live in
+`tools/i18n-meta.js`. After editing either, regenerate the variants:
+
+```bash
+node tools/generate-i18n.js
+```
+
+Then commit the regenerated `public/es/`, `public/pt/`, `public/ar/` files
+along with the source change.
+
+Privacy and terms are English-only by design — legal pages aren't translated
+without a lawyer.
 
 ## Deploys
 
@@ -45,8 +84,8 @@ Preview deploys are created for any non-`main` branch.
 
 ## Local development
 
-Open `public/index.html` directly in a browser, or serve the `public/`
-folder so `/privacy` and `/terms` resolve as clean URLs:
+Serve the `public/` folder so extensionless URLs (`/instructions`, `/privacy`,
+`/terms`) resolve correctly:
 
 ```bash
 cd public
@@ -59,6 +98,16 @@ For a closer-to-prod preview using Wrangler:
 ```bash
 npx wrangler dev
 ```
+
+## SEO
+
+- Per-language URLs with full hreflang cross-references (see above).
+- `sitemap.xml` and a custom `robots.txt` with `Sitemap:` directive.
+- Structured data: `WebSite`, `Organization`, `Brand`, two `Product`,
+  `FAQPage` (homepage); `BreadcrumbList` and `HowTo` (instructions page).
+- Open Graph and Twitter cards on every page.
+- `robots.txt` blocks known AI-training crawlers (GPTBot, Google-Extended,
+  ClaudeBot, anthropic-ai, CCBot, PerplexityBot, etc.).
 
 ## Distribution
 

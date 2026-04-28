@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage (4 language variants, hreflang alternates each-to-each) -->
+  <url>
+    <loc>https://luminabymirra.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Instructions (4 language variants) -->
+  <url>
+    <loc>https://luminabymirra.com/instructions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/instructions"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/instructions"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/instructions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/instructions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/es/instructions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/instructions"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/instructions"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/instructions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/instructions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/pt/instructions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/instructions"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/instructions"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/instructions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/instructions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/ar/instructions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/instructions"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/instructions"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/instructions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luminabymirra.com/instructions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legal pages (English-only, no language alternates) -->
+  <url>
+    <loc>https://luminabymirra.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://luminabymirra.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
