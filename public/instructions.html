@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://luminabymirra.com/instructions">
 
   <!-- Hreflang -->
-          <link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions">
+            <link rel="alternate" hreflang="en" href="https://luminabymirra.com/instructions">
   <link rel="alternate" hreflang="es" href="https://luminabymirra.com/es/instructions">
   <link rel="alternate" hreflang="pt" href="https://luminabymirra.com/pt/instructions">
   <link rel="alternate" hreflang="ar" href="https://luminabymirra.com/ar/instructions">
@@ -616,7 +616,7 @@
 <body>
 
   <!-- LANGUAGE SWITCHER -->
-          <nav class="lang-switcher" aria-label="Language">
+            <nav class="lang-switcher" aria-label="Language">
     <a class="lang-btn active" href="/instructions" hreflang="en" title="English" aria-current="page">EN</a>
     <a class="lang-btn" href="/es/instructions" hreflang="es" title="Español">ES</a>
     <a class="lang-btn" href="/pt/instructions" hreflang="pt" title="Português">PT</a>
@@ -1176,4 +1176,18 @@
       (function(btn) {
         btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
       })(langBtns[b]);
- 
+     }
+
+    // ─── SCROLL ANIMATIONS ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
