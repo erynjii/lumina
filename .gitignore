@@ -12,6 +12,7 @@
 # move it to public/img/ instead.
 /images/
 /_tmp_extract/
+/_incoming/
 /raw/
 /source/
 
